@@ -21,7 +21,7 @@ SOURCE_FILES = [
     'pollreactor.c', 'msgblock.c', 'trdispatch.c',
     'kin_cartesian.c', 'kin_corexy.c', 'kin_corexz.c', 'kin_delta.c',
     'kin_polar.c', 'kin_rotary_delta.c', 'kin_winch.c', 'kin_extruder.c',
-    'kin_shaper.c', 'kin_polargraph.c',
+    'kin_shaper.c', 'kin_polargraph.c', 'kin_scara.c',
 ]
 DEST_LIB = "c_helper.so"
 OTHER_FILES = [
@@ -114,6 +114,13 @@ defs_kin_corexz = """
 
 defs_kin_polargraph = """
     struct stepper_kinematics *polargraph_stepper_alloc(double width
+        , char side);
+"""
+
+defs_kin_scara = """
+    struct stepper_kinematics *scara_stepper_alloc(
+        double shoulder_length, double arm_length, 
+        double gantry_shoulder, double gantry_arm
         , char side);
 """
 
@@ -211,7 +218,7 @@ defs_all = [
     defs_itersolve, defs_trapq, defs_trdispatch,
     defs_kin_cartesian, defs_kin_corexy, defs_kin_corexz, defs_kin_delta,
     defs_kin_polar, defs_kin_rotary_delta, defs_kin_winch, defs_kin_extruder,
-    defs_kin_shaper, defs_kin_polargraph,
+    defs_kin_shaper, defs_kin_polargraph, defs_kin_scara,
 ]
 
 # Update filenames to an absolute path
